@@ -23,14 +23,14 @@ public class GreetingController {
         return "greeting";
     }
 
-    @GetMapping
+    @GetMapping("/")
     public String main(Map<String, Object> model) {
         Iterable<Message> messages = messageRepo.findAll();
         model.put("messages", messages);
         return "main";
     }
 
-    @PostMapping
+    @PostMapping("/")
     public String add(@RequestParam String text, @RequestParam String tag, Map<String, Object> model) {
         if (text != null && !text.isEmpty()) {
             messageRepo.save(new Message().text(text).tag(tag));
@@ -39,7 +39,7 @@ public class GreetingController {
         return "main";
     }
 
-    @PostMapping("filter")
+    @PostMapping("/filter")
     public String filter(@RequestParam(defaultValue = "") String tagFilter, Map<String, Object> model) {
         Iterable<Message> messages = (tagFilter != null && !tagFilter.isEmpty()) ?
                 messageRepo.findByTag(tagFilter) : messageRepo.findAll();
