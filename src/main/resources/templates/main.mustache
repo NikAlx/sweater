@@ -22,11 +22,19 @@
             <button type="submit">Search</button>
         </form>
     </div>
+    <div>
+        <form method="post" action="/delete">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+            <input type="text" name="deletedId" placeholder="id for delete">
+            <button type="submit">delete</button>
+        </form>
+    </div>
         {{#messages}}
             <div>
                 <b>{{id}}</b>
                 <span>{{text}}</span>
                 <i>{{tag}}</i>
+                <strong>{{authorName}}</strong>
             </div>
         {{/messages}}
 </body>

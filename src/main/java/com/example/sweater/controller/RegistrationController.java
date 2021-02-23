@@ -27,13 +27,14 @@ public class RegistrationController {
 
     @PostMapping
     public String addUser(User user, Map<String, Object> model) {
-        User userFromDb = userRepo.findByUsername(user.username());
+        User userFromDb = userRepo.findByUsername(user.getUsername());
         if (userFromDb != null) {
             model.put("message", "User exists!");
             return "registration";
         }
 
-        user.active(true).roles(Collections.singleton(Role.USER));
+        user.setActive(true);
+        user.setRoles(Collections.singleton(Role.USER));
         userRepo.save(user);
 
         return "redirect:/login";
