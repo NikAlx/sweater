@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @Data
 @NoArgsConstructor
-@Accessors(fluent = true)
+@Accessors(chain = true)
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
