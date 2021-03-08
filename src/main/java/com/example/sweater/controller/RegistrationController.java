@@ -21,7 +21,7 @@ public class RegistrationController {
     // "/registration" - endpoint
     @GetMapping
     public String registration() {
-        // "registration" - view, registration.mustache
+        // "registration" - view, registration.ftl
         return "registration";
     }
 
